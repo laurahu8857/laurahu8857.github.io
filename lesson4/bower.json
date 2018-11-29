@@ -1,0 +1,11 @@
+{
+  "name": "webapp-bootstrap4",
+  "private": true,
+  "dependencies": {
+    "bootstrap": "~4.1.3"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "mocha": "^5.2.0"
+  }
+}
