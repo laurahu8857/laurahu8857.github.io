@@ -31,6 +31,10 @@ function send(e)
 
     name = $("#input_name").val();
     email = $("#input_email").val();
+//     簡單的檢查, 判斷email字串中 “@” 的位置是多少，如果回傳-1就代表沒有這個字串
+//     let result = email.indexOf("@");
+    let patt;
+    let result;
     phone = $("#input_phone").val();
     bdy = $("#sel_bdy").val();
     bdm = $("#sel_bdm").val();
@@ -57,14 +61,20 @@ function send(e)
        $("#input_name").addClass("is-invalid");
        allpass = false;
    }
-//    判斷 email is "", 給warning word
-   if (email=="")
+//    判斷 email is "" 或是 email不符合格式, 給warning word
+   patt = /^([\w\.\-_]+)?\w+@[\w-_]+(\.\w+){1,}$/i;
+   result = patt.test(email);
+   if (email==""||!result)
    {
        $("#input_email").addClass("is-invalid");
        allpass = false;
    }
 
-   if(phone=="")
+//    手機號碼的檢查
+   patt = /^09[0-9]{8}/i;
+   result = patt.test(phone);
+
+   if(phone==""||!result)
    {
     $("#input_phone").addClass("is-invalid");
     allpass = false;
